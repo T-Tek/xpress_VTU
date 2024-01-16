@@ -2,6 +2,7 @@ package com.xpressvtu.xpressvtu.service.payment;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.xpressvtu.xpressvtu.exceptions.PaymentServiceException;
 import com.xpressvtu.xpressvtu.model.airtime.AirtimeRequest;
 import com.xpressvtu.xpressvtu.model.airtime.AirtimeResponse;
 import org.apache.commons.codec.binary.Hex;
@@ -59,13 +60,13 @@ public class PaymentServiceImpl implements PaymentService {
         } catch (HttpClientErrorException.BadRequest ex) {
             String responseBody = ex.getResponseBodyAsString();
             logger.error("Error fulfilling airtime request. Server responded with HTTP {}: {}", ex.getRawStatusCode(), responseBody);
-            throw new RuntimeException("Airtime request failed: " + responseBody, ex);
+            throw new PaymentServiceException("Airtime request failed: " + responseBody, ex);
         } catch (RestClientException ex) {
             logger.error("Error fulfilling airtime request: {}", ex.getMessage());
-            throw new RuntimeException(ex);
+            throw new PaymentServiceException(ex.getMessage(), ex);
         } catch (Exception e) {
             logger.error("Unexpected error fulfilling airtime request: {}", e.getMessage(), e);
-            throw new RuntimeException(e);
+            throw new PaymentServiceException(e.getMessage(), e);
         }
     }
 
