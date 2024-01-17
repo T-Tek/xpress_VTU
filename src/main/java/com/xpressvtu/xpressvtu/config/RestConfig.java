@@ -22,14 +22,10 @@ public class RestConfig {
     public RestTemplate restTemplate() {
         return new RestTemplate();
 }
-
     @Bean
     public OkHttpClient okHttpClient() {
         return new OkHttpClient();
     }
-
-
-
     @Bean
      HttpClient createHttpClientBean(){
         return HttpClient.newHttpClient();

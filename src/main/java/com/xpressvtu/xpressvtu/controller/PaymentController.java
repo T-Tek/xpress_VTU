@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class PaymentController {
 
     private final PaymentService paymentService;
-
     @Autowired
     public PaymentController(PaymentService paymentService) {
         this.paymentService = paymentService;
@@ -26,10 +25,8 @@ public class PaymentController {
     public ResponseEntity<AirtimeResponse> makePayment(@RequestBody AirtimeRequest airtimeRequest) {
         try {
             AirtimeResponse response = paymentService.fulfillAirtime(airtimeRequest);
-            // Do something with the response if needed
             return ResponseEntity.ok(response);
         } catch (RuntimeException e) {
-            // Log the exception if needed
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
