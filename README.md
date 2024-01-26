@@ -1,4 +1,5 @@
 **XpressVTU Merchant API**
+
 Welcome to the XpressVTU Merchant API! This API provides simple and secure endpoints for merchant registration, login, and airtime payment functionalities.
 
 **Endpoints**
