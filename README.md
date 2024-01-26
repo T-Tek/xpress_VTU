@@ -46,5 +46,5 @@ Response:
 }
 
 Exception Handling
-The API handles various exceptions, such as incorrect passwords, merchant not found, and payment service errors. Ensure to handle these exceptions in your client applications appropriately.
+The API handles various exceptions, such as incorrect passwords, merchant not found, and payment service errors.
 
